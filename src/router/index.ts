@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "../views/HomePage.vue"
 import Gallery from "../views/Gallery.vue"
-
+import Material from "../views/Material.vue"
 import about from "../views/about.vue";
 import ErrorPage from "../views/ErrorPage.vue";
 
@@ -19,6 +19,13 @@ const router = createRouter(
         name: "Gallery",
         component: Gallery,
       },
+
+      {
+        path: "/Material",
+        name: "Material",
+        component: Material,
+      },
+
       {
         path: "/about",
         name: "about",

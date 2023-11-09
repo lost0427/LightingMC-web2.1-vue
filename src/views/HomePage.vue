@@ -7,16 +7,10 @@ import CommunityImage from "../assets/HomePage/Community.png";
 import ActivityImage from "../assets/HomePage/Activities.png";
 import SwordImage from "../assets/HomePage/Sword.png";
 import "../assets/fonts/fonts.css"
+import SellerCard from "../components/SellerCard.vue";
+import {ref} from "vue";
+import { gsap } from "gsap";
 
-function scrollToBottom() {
-  const height = document.documentElement.scrollHeight || document.body.scrollHeight;
-
-  // 使用 smooth 滚动到页面底部
-  window.scrollTo({
-    top: height,
-    behavior: 'smooth'
-  });
-}
 
 /*
 const status = null;
@@ -34,6 +28,13 @@ document.addEventListener("DOMContentLoaded", function() {
   mounted()
 });
 */
+const showBox1 = ref(true);
+const showBox2 = ref(false);
+
+const toggleBoxes = () => {
+  showBox1.value = !showBox1.value;
+  showBox2.value = !showBox2.value;
+};
 </script>
 
 <template>
@@ -44,15 +45,36 @@ document.addEventListener("DOMContentLoaded", function() {
         <div class="description-text no-select">
           一个<strong style="color: lightcoral">有爱</strong>的公益MC服务器社区
         </div>
+
       </div>
       <div class="seller">
-        <d-button  @click="scrollToBottom" variant="solid" size="lg" class="scrollButton">
+        <div class="description-text" v-if="showBox2">
+          <seller-card
+              title="服务器地址"
+              :icon="['fas', 'fa-server']"
+              content="mc.ldgame.xyz"
+              color="black"
+          ></seller-card>
+          <seller-card
+              title="游戏版本"
+              :icon="['fas', 'fa-gamepad']"
+              content="1.19.1 Java/基岩"
+              color="green"
+          ></seller-card>
+          <seller-card
+              title="QQ交流群"
+              :icon="['fab', 'fa-qq']"
+              content="239434096"
+              color="deepskyblue"
+          ></seller-card>
+        </div>
+        <d-button v-if="showBox1" @click="toggleBoxes" variant="solid" size="lg" class="scrollButton">
           <strong>立刻加入</strong>
         </d-button>
-        <div class="more no-select">
+        <div v-if="showBox1" class="more no-select">
           了解更多
         </div>
-        <div class="arrow">
+        <div v-if="showBox1" class="arrow">
         </div>
       </div>
     </div>
@@ -86,33 +108,10 @@ document.addEventListener("DOMContentLoaded", function() {
         artical="如果你觉得不加插件的MC很“没意思”，那我们指出原版生存服的玩法和乐趣并没有被彻底发掘。不管你是建筑党，还是生电大佬，还是MC生存专家，抑或是只想找一个陌生的地方探险、建立新的城市，服务器里总有一个适合你的角色，在等着你的到来！"
         :img="SwordImage"
     ></HomePage>
-    <div class="mg background">
-      <div class="joinus no-select">
-        <h1 class="h1 ye">
-          JOIN US
-        </h1>
-      </div>
-      <div class="info">
-        <!--
-        <p class="intimation" v-if="status === 1">服务器状态：在线</p>
-        <p class="intimation" v-else-if="status === 0">服务器状态：离线</p>
-        <p class="intimation" v-else>服务器状态：未知</p>
-        -->
-        <p class="intimation">
-          QQ交流群 239434096
-        </p>
-        <p class="intimation">
-          服务器地址 mc.ldgame.xyz
-        </p>
-        <p class="intimation">
-          游戏版本 1.20.1 Java/基岩
-        </p>
-      </div>
-    </div>
   </div>
 </template>
 
-<style scoped>
+<style lang="scss">
 .background {
   background-image: url("../assets/HomePage/background.webp");
   background-position: center;
@@ -121,7 +120,6 @@ document.addEventListener("DOMContentLoaded", function() {
   flex-direction: column;
   height: calc(100vh - 40px);
   max-width: 100vw;
-
 
 }
 
@@ -159,7 +157,6 @@ document.addEventListener("DOMContentLoaded", function() {
   color: white;
   font-size: x-large;
   text-align: center;
-  margin-top: 60px;
 }
 
 .more {
@@ -170,16 +167,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 }
 
-.intimation {
-  font-size: 1.5rem;
-  color: white;
-  backdrop-filter: blur(5px);
-  border-radius: 8px;
-  border: 2px solid #747bff;
-  margin: auto;
-  width: fit-content;
-  margin-top: 20px;
-}
 
 .arrow {
   background-image: url("../assets/HomePage/arrow.png");
@@ -190,18 +177,6 @@ document.addEventListener("DOMContentLoaded", function() {
   opacity: 50%;
   margin-top: 20px;
 
-}
-
-.joinus {
-  height: 40vh;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.info {
-  height: 60vh;
 }
 
 
