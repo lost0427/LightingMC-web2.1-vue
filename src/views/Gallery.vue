@@ -45,12 +45,14 @@ for (let i = 1; i <= 19; i++) {
 <template>
   <div class="G flex-cc">
     <h1>灵动MC风景画廊</h1>
-    <d-card v-for="item in list" :key="item.id" v-d-image-preview v-ripple="{ duration: 300 }" class="demo-card" :src="item.img">
-
-      <template #content>
+    <div class="gallery" v-d-image-preview>
+      <div v-for="item in list" class="flex-cc">
+        <img :key="item.id" class="img demo-card" :src="item.img"  alt=""/>
         {{ item.text }}
-      </template>
-    </d-card>
+
+      </div>
+    </div>
+
 
   </div>
   <div style="height: 60px"></div>
@@ -58,7 +60,6 @@ for (let i = 1; i <= 19; i++) {
 
 <style lang="scss">
 .demo-card {
-  width: 80vw;
   cursor: pointer;
   transition:
       box-shadow .3s cubic-bezier(.645,.045,.355,1),
@@ -70,12 +71,11 @@ for (let i = 1; i <= 19; i++) {
   }
 
   .card-block {
-    margin-right: 16px;
-
+    /* margin-right: 16px;
+*/
     i {
       cursor: pointer;
       font-size: 16px;
-      margin-right: 8px;
       vertical-align: middle;
     }
 
@@ -109,5 +109,20 @@ h1 {
   padding-top: 20px;
   padding-bottom: 20px;
   color: var(--devui-text);
+}
+.gallery {
+  min-height: 100vh;
+  max-width: 80vw;
+  background-color: beige;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.img {
+  height: 300px;
+  width: 500px;
+  border-radius: 10px;
+  margin: 10px 10px 10px 10px;
 }
 </style>

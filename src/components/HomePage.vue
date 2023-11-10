@@ -36,6 +36,7 @@ const props = defineProps(["title", "artical", "img"]);
   place-items: center;
   min-height: min-content;
   min-width: min-content;
+  max-width: 1000px;
 }
 
 .container {
