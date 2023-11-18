@@ -3,7 +3,33 @@
 </script>
 
 <template>
-
+  <div class="shell">
+        <div id="img-box">
+            <img src="./1.png" alt="">
+        </div>
+        <form action="" method="post">
+            <div id="form-body">
+                <div id="welcome-lines">
+                    <div id="w-line-1">HI,GOAT</div>
+                    <div id="w-line-2">Welcome Back</div>
+                </div>
+                <div id="input-area">
+                    <div class="f-inp">
+                        <input type="text" placeholder="Email Address">
+                    </div>
+                    <div class="f-inp">
+                        <input type="password" placeholder="Password">
+                    </div>
+                </div>
+                <div id="submit-button-cvr">
+                    <button type="submit" id="submit-button">LOGIN</button>
+                </div>
+                <div id="forgot-pass">
+                    <a href="#">Forgot password?</a>
+                </div>
+            </div>
+        </form>
+    </div>
 </template>
 
 <style lang="scss">
