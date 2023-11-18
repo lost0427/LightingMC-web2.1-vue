@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'ye';
+    src: url('./YungJakesNewHandwriting-Regular.ttf') format('opentype');
+}
+
+
+.ye {
+    font-family: 'ye', sans-serif;
+}
+
