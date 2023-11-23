@@ -1,33 +1,48 @@
 <script lang="ts">
-import { ref, onMounted } from 'vue';
+import { defineComponent, ref } from 'vue';
+import sourceData from '../assets/Material.json';
 
-import { gsap } from 'gsap';
+export default defineComponent({
+  setup() {
+    const value = ref('');
+    const allowEmptyValueSearch = ref(true);
 
-const text = ref(null);
-
-onMounted(() => {
-  gsap.from(text.value, {
-    delay: 0.5,
-    duration: 1,
-    y: 100,
-    autoAlpha: 0,
-    ease: "back.out(1.7)",
-  });
+    const source = ref(sourceData);
+    const selectValue = (e) => {
+      console.log('selectValue', e);
+    };
+    const transInputFocusEmit = () => {
+      console.log('transInputFocusEmit');
+    };
+    const position = ref(['bottom']);
+    return {
+      value,
+      source,
+      allowEmptyValueSearch,
+      transInputFocusEmit,
+      selectValue,
+      position,
+    };
+  },
 });
 </script>
 
 
 <template>
   <div class="G" style="align-items: center">
-    <h1 ref="text" class="text">建筑材料申请</h1>
-    <div class="contaner flex-cc">
-      <div class="inventory">
-
-      </div>
-      <div class="publicise">
-
-      </div>
-    </div>
+    <h1>建筑材料申请</h1>
+    <d-auto-complete
+        :delay="1000"
+        :source="source"
+        v-model="value"
+        :allow-empty-value-search="allowEmptyValueSearch"
+        :select-value="selectValue"
+        :trans-input-focus-emit="transInputFocusEmit"
+        :position="position"
+        :width="420"
+        :append-to-body="false"
+    >
+    </d-auto-complete>
   </div>
 </template>
 

@@ -7,7 +7,6 @@
 // })
 import { defineProps } from "vue";
 const props = defineProps(["title", "artical", "img"]);
-
 </script>
 
 <template>

@@ -3,7 +3,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 
-const loggedIn = ref(false); // 假设用户未登录
+const loggedIn = ref(true); // 假设用户未登录
 
 // 根据用户登录状态来设置 loggedIn 的值
 onMounted(() => {
@@ -51,11 +51,11 @@ const fontSize = computed(() => 25 - wordCount.value); // 调整字体大小，
       </div>
       <div v-else class="unlogged">
         <div style="width: 50px"></div>
-        <p @click="navigateToPage('/Login')" class="login">
+        <p @click="navigateToPage('/login')" class="login">
           登录
         </p>
         <p style="color: white;user-select: none">|</p>
-        <p @click="navigateToPage('/Reg')" class="reg">
+        <p @click="navigateToPage('/reg')" class="reg">
           注册
         </p>
       </div>

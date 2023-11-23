@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-
-import { HomePage, Gallery, Material, about, ErrorPage, Reg, Login } from '@views/';
-
+import HomePage from "../views/HomePage.vue"
+import Gallery from "../views/Gallery.vue"
+import Material from "../views/Material.vue"
+import about from "../views/about.vue";
+import ErrorPage from "../views/ErrorPage.vue";
 
 const router = createRouter(
   {
@@ -28,18 +30,6 @@ const router = createRouter(
         path: "/about",
         name: "about",
         component: about,
-      },
-
-      {
-        path: "/Reg",
-        name: "Reg",
-        component: Reg,
-      },
-
-      {
-        path: "/Login",
-        name: "Login",
-        component: Login,
       },
 
       {
