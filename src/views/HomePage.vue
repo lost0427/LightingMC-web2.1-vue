@@ -113,7 +113,7 @@ const toggleBoxes = () => {
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .background {
   background-image: url("../assets/HomePage/background.webp");
   background-position: center;

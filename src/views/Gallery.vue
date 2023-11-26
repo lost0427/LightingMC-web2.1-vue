@@ -58,7 +58,7 @@ for (let i = 1; i <= 19; i++) {
   <div style="height: 60px"></div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .demo-card {
   cursor: pointer;
   transition:

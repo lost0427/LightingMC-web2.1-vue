@@ -34,7 +34,7 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .background {
   background-image: url("@/assets/images/background/background.webp");
   background-position: center;

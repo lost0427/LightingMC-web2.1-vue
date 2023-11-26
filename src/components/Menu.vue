@@ -64,7 +64,7 @@ const fontSize = computed(() => 25 - wordCount.value); // 调整字体大小，
 
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .flex-center-sb {
   display: flex;

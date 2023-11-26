@@ -19,7 +19,7 @@ const props = defineProps(["title", "content", "icon", "color"]);
     </div>
   </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 .card {
   /*background-color: white;*/
   border: v-bind(color) solid;

@@ -29,7 +29,7 @@ const props = defineProps(["title", "artical", "img"]);
     </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .introduce {
   /* box-sizing: border-box; */
   display: grid;
