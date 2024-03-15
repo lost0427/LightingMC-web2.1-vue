@@ -11,6 +11,7 @@ onMounted(() => {
   // 例如：如果用户已登录，执行 loggedIn.value = true;
   // 如果用户未登录，执行 loggedIn.value = false;
 });
+
 const navigateToPage = (path) => {
   // 使用 JavaScript 进行页面导航
   window.location.href = path;
@@ -32,7 +33,8 @@ const fontSize = computed(() => 25 - wordCount.value); // 调整字体大小，
           首页
         </li>
         <li @click="navigateToPage('/Gallery')">摄影画廊</li>
-        <li @click="navigateToPage('/Material')">材料审批</li>
+        <li @click="navigateToPage('/Documents')">帮助文档</li>
+        <li @click="navigateToPage('/Material_')">材料审批</li>
         <li @click="navigateToPage('/Players')">玩家系统</li>
         <li @click="navigateToPage('/Vote')">表决大厅</li>
         <li @click="navigateToPage('/Integrate')">灵动整合</li>

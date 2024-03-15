@@ -1,5 +1,41 @@
-<script lang="ts">
+<script setup lang="ts">
+import {
+  tab_img1, tab_img2, tab_img3, tab_img4, tab_img5
+} from "@/assets/Material/gui/tab/tab_img.js";
 
+import { ref } from "vue";
+
+const tab_img = [tab_img1, tab_img2, tab_img3, tab_img4, tab_img5]; // 将图像引用存储在数组中
+const tab = [
+  '建筑方块',
+  '装饰性方块',
+  '红石',
+  '交通运输',
+  '杂项',
+  '食物',
+  '工具',
+  '战斗用品',
+  '酿造',
+  '生产模式物品栏'
+]
+
+const inv_top = ref<Array<{ id: string; tab: string; tab_img: any }>>([]);
+const inv_down = ref<Array<{ id: string; tab: string; tab_img: any }>>([]);
+
+for (let i = 1; i <= 5; i++) {
+  inv_top.value.push({
+    id: i.toString().padStart(3, '0'),
+    tab: tab[i % tab.length],
+    tab_img: tab_img[i % tab_img.length]
+  });
+}
+for (let i = 6; i <= 10; i++) {
+  inv_down.value.push({
+    id: i.toString().padStart(3, '0'),
+    tab: tab[i % tab.length],
+    tab_img: tab_img[i % tab_img.length]
+  });
+}
 </script>
 
 
@@ -7,12 +43,14 @@
   <div class="G" style="align-items: center">
     <h1>建筑材料申请</h1>
     <div class="box">
-      <div class="inventry">
+      <div class="inventory">
         <div class="inv-pic flex-center-sb">
           <div class="left flex-center-sb" style="justify-content: left">
-            <div style="position: relative " v-for="n in 5">
+            <div style="position: relative " v-for="item in inv_top">
               <img class="tabs" src="../assets/Material/gui/creative_inventory/tab-classify-set.png">
-              <div class="overlay-s"></div>
+              <div class="overlay-s">
+                <img :key="item.id" :src="item.tab_img" class="overlay-s tab_img" alt="">
+              </div>
             </div>
           </div>
           <div style="position: relative " class="right flex-center-sb">
@@ -28,9 +66,11 @@
         </div>
         <div class="inv-pic flex-center-sb">
           <div class="left flex-center-sb" style="justify-content: left">
-            <div style="position: relative " v-for="n in 5">
+            <div style="position: relative " v-for="item in inv_down">
               <img class="tabs reverse" src="../assets/Material/gui/creative_inventory/tab-classify-set.png">
-              <div class="overlay-s"></div>
+              <div class="overlay-s">
+                <img :key="item.id" :src="item.tab_img" class="overlay-s tab_img" alt="">
+              </div>
             </div>
           </div>
           <div style="position: relative " class="right flex-center-sb">
@@ -69,11 +109,11 @@ h1 {
   width: 50%;
   height: 100%;
 }
-.part, .inventry{
+.part, .inventory{
   flex: 1;
 
 }
-.inventry {
+.inventory {
   height: 28rem;
 }
 .inv-pic {
@@ -98,7 +138,7 @@ h1 {
   &:before {
     content: '';
     display: block;
-    padding-top: (135 / 194) * 100%;
+    padding-top: calc((135 / 194) * 100%);
   }
 }
 .overlay-s {
@@ -111,7 +151,6 @@ h1 {
     display: block;
     padding-top: 100%;
     user-select: none;
-
   }
 }
 .tabs {
@@ -127,8 +166,13 @@ h1 {
 .reverse {
   transform: scaleY(-1);
 }
-.inventry {
+.inventory {
   user-select: none;
-
+}
+.tab_img {
+  width: 60%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 </style>

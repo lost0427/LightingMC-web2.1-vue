@@ -2,7 +2,7 @@
 import {
   img1, img2, img3, img4, img5, img6, img7, img8, img9,
   img10, img11, img12, img13, img14, img15, img16, img17, img18, img19
-} from "../assets/Gallery";
+} from "@/assets/Gallery";
 
 import { ref } from "vue";
 
@@ -47,7 +47,7 @@ for (let i = 1; i <= 19; i++) {
     <h1>灵动MC风景画廊</h1>
     <div class="gallery" v-d-image-preview>
       <div v-for="item in list" class="flex-cc">
-        <img :key="item.id" class="img demo-card" :src="item.img"  alt=""/>
+        <img :key="item.id" class="img demo-card" :src="item.img" loading="lazy" alt=""/>
         {{ item.text }}
 
       </div>

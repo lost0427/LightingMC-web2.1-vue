@@ -9,7 +9,6 @@ import SwordImage from "../assets/HomePage/Sword.png";
 import "../assets/fonts/fonts.css"
 import SellerCard from "../components/SellerCard.vue";
 import {ref} from "vue";
-import { gsap } from "gsap";
 
 
 /*
