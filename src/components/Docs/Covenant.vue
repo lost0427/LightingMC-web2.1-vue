@@ -65,6 +65,7 @@ h1, p, strong {
 }
 h1 {
   font-size: 2.2rem;
+  border-bottom: 1px solid #ebedef;
 }
 
 </style>

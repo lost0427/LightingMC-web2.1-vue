@@ -10,5 +10,8 @@ import '@devui-design/icons/icomoon/devui-icon.css';
 import { ThemeServiceInit, infinityTheme } from 'devui-theme';
 
 ThemeServiceInit({ infinityTheme }, 'infinityTheme');
+const app = createApp(App);
 
-createApp(App).use(router).use(DevUI).mount('#app');
+app.use(router);
+app.use(DevUI);
+app.mount('#app');

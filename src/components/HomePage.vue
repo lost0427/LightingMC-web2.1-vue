@@ -5,7 +5,6 @@
 //   artical111: String,
 //   img111: String
 // })
-import { defineProps } from "vue";
 const props = defineProps(["title", "artical", "img"]);
 </script>
 
@@ -74,8 +73,6 @@ const props = defineProps(["title", "artical", "img"]);
 }
 @media (max-width: 768px) {
   /* 在移动设备上采用上下布局 */
-
-
 
   .introduce {
     /* box-sizing: border-box; */

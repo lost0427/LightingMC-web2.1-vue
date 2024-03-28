@@ -27,5 +27,6 @@ h1, p {
 }
 h1 {
   font-size: 2.2rem;
+  border-bottom: 1px solid #ebedef;
 }
 </style>

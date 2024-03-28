@@ -3,7 +3,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 
-const loggedIn = ref(true); // 假设用户未登录
+const loggedIn = ref(false); // 假设用户未登录
 
 // 根据用户登录状态来设置 loggedIn 的值
 onMounted(() => {
@@ -28,7 +28,7 @@ const fontSize = computed(() => 25 - wordCount.value); // 调整字体大小，
   <div class="menu flex-center-sb">
     <div class="nav flex-center-sb" style="justify-content: left" id="nav">
       <div class="real-nav flex-center-sb" style="justify-content:left;height: 100%">
-        <li @click="navigateToPage('/')">
+        <li style="display: block" @click="navigateToPage('/')">
           <i class="icon icon-homepage"></i>
           首页
         </li>
@@ -53,11 +53,11 @@ const fontSize = computed(() => 25 - wordCount.value); // 调整字体大小，
       </div>
       <div v-else class="unlogged">
         <div style="width: 50px"></div>
-        <p @click="navigateToPage('/login')" class="login">
+        <p @click="navigateToPage('/Login')" class="login">
           登录
         </p>
         <p style="color: white;user-select: none">|</p>
-        <p @click="navigateToPage('/reg')" class="reg">
+        <p @click="navigateToPage('/Reg')" class="reg">
           注册
         </p>
       </div>
@@ -87,12 +87,16 @@ const fontSize = computed(() => 25 - wordCount.value); // 调整字体大小，
   padding-left: 5px;
   padding-right: 5px;
   user-select: none;
+  border-radius: 3px;
+
 }
 
 .reg {
   color: white;
   padding-left: 5px;
   padding-right: 5px;
+  border-radius: 3px;
+
 }
 
 .user-info {
@@ -129,13 +133,12 @@ const fontSize = computed(() => 25 - wordCount.value); // 调整字体大小，
 }
 
 li {
-  height: 25px;
   min-width: 70px;
   color: white;
   text-align: center;
   margin-left: 5px;
   margin-right: 5px;
-  border-radius: 10px;
+  border-radius: 3px;
   list-style: none;
 }
 
@@ -155,6 +158,11 @@ li:hover {
 .real-nav {
   overflow: scroll;
   padding-top: 5px;
+}
+li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
 

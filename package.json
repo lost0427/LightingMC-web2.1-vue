@@ -15,6 +15,7 @@
     "devui-theme": "^0.0.7",
     "sass": "^1.69.5",
     "vue": "^3.3.4",
+    "vue-client-recaptcha": "^1.1.4",
     "vue-devui": "^1.5.15-hotfix.4",
     "vue-router": "^4.2.5"
   },
