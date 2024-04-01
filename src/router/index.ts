@@ -11,6 +11,7 @@ import Reg from "../views/Reg.vue";
 import Test from "../views/Test.vue";
 import PleaseQQ from "../views/PleaseQQ.vue";
 import Blind from "../views/Blind.vue";
+import Players from "../views/Players.vue";
 
 const router = createRouter(
   {
@@ -81,10 +82,16 @@ const router = createRouter(
       },
 
       {
+        path: "/Players",
+        name: "Players",
+        component: Players,
+      },
+
+      {
         path:'/:pathMatch(.*)',
         name:'ErrorPage',
         component: ErrorPage,
-      }
+      },
     ]
   }
 )
