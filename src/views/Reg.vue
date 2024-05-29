@@ -142,7 +142,7 @@ const Step1 = () => {
   box-shadow: 0 0 20px #a29bfe;
 }
 .table{
-  font: 900 40px '';
+  font: 900 30px '';
   text-align: center;
   letter-spacing: 5px;
   color: #3d3d3d;

@@ -1,6 +1,26 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
 import VueClientRecaptcha from 'vue-client-recaptcha';
+import axios from 'axios';
+
+
+const username = ref('');
+const password = ref('');
+
+const login = async () => {
+  try {
+    const response = await axios.post('http://localhost:5000/login', {
+      username: username.value,
+      password: password.value
+    });
+    const accessToken = response.data.access_token;
+    console.log(accessToken);
+    localStorage.setItem('accessToken', accessToken);
+    // 登录成功后的处理，例如跳转到另一个页面
+  } catch (error) {
+    console.error('Login failed:', error.response.data.error);
+  }
+};
 
 // 声明响应式变量
 const inputValue = ref(null);
@@ -30,30 +50,37 @@ const navigateToPage = (path) => {
 <template>
   <div class="G">
     <div class="Login">
-      <div class="box">
-        <p v-if="step3" class="table">正在</p>
-        <p class="table">登录</p>
-        <br>
-        <input v-if="step1" type="text" placeholder="账号">
-        <input v-if="step1" type="password" placeholder="密码">
-        <br>
-        <div v-if="step2" style="background-color: #ECECEDFF; border-radius: 10px" class="sample-captcha flex-center-sb">
-          <input type="text" v-model="inputValue" />
+      <form @submit.prevent="login">
+      <label>Username:</label>
+      <input type="text" v-model="username">
+      <label>Password:</label>
+      <input type="password" v-model="password">
+      <button type="submit">Login</button>
+    </form>
+<!--      <div @submit.prevent="login" class="box">-->
+<!--        <p v-if="step3" class="table">正在</p>-->
+<!--        <p class="table">登录</p>-->
+<!--        <br>-->
+<!--        <input v-if="step1" type="text" placeholder="账号">-->
+<!--        <input v-if="step1" type="password" placeholder="密码">-->
+<!--        <br>-->
+<!--        <div v-if="step2" style="background-color: #ECECEDFF; border-radius: 10px" class="sample-captcha flex-center-sb">-->
+<!--          <input type="text" v-model="inputValue" />-->
 
-          <VueClientRecaptcha
-              :value="inputValue"
-              @isValid="checkValidCaptcha"
-          />
-          <p style="text-align: right; font-size: 0.5rem; color: transparent" @click="navigateToPage('/Blind')">盲人选项</p>
-        </div>
-        <button v-if="step1" @click="step1 = false;step2 = true;" class="go">确认</button>
-        <button v-if="step2" class="go">确认</button>
+<!--          <VueClientRecaptcha-->
+<!--              :value="inputValue"-->
+<!--              @isValid="checkValidCaptcha"-->
+<!--          />-->
+<!--          <p style="text-align: right; font-size: 0.5rem; color: transparent" @click="navigateToPage('/Blind')">盲人选项</p>-->
+<!--        </div>-->
+<!--        <button v-if="step1" @click="step1 = false;step2 = true;" class="go">确认</button>-->
+<!--        <button type="submit" v-if="step2" class="go">确认</button>-->
 
-        <div v-if="!step3" style="width: 100%" class="flex-center-sb">
-          <p @click="navigateToPage('/Reg')" class="">还没有账号？注册</p>
-          <p @click="navigateToPage('/PleaseQQ')">忘记密码？</p>
-        </div>
-      </div>
+<!--        <div v-if="!step3" style="width: 100%" class="flex-center-sb">-->
+<!--          <p @click="navigateToPage('/Reg')" class="">还没有账号？注册</p>-->
+<!--          <p @click="navigateToPage('/PleaseQQ')">忘记密码？</p>-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
   </div>
 
@@ -100,7 +127,7 @@ const navigateToPage = (path) => {
   box-shadow: 0 0 20px #a29bfe;
 }
 .table{
-  font: 900 40px '';
+  font: 900 30px '';
   text-align: center;
   letter-spacing: 5px;
   color: #3d3d3d;
